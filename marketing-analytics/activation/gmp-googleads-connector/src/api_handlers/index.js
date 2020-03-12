@@ -24,6 +24,7 @@ const CampaignManagerConversionsUpload = require('./cm_conversions_upload.js');
 const SftpUpload = require('./sftp_uploader.js');
 const SheetsLoadCsv = require('./sheets_load_csv.js');
 const saConversionsUpload = require('./sa_conversions_insert.js');
+const adsCustomerMatchUpload = require('./ads_customer_match.js');
 
 const {GoogleAnalyticsConfig} = GoogleAnalyticsDataImport;
 const {MeasurementProtocolConfig} = MeasurementProtocol;
@@ -31,6 +32,7 @@ const {CampaignManagerConfig} = CampaignManagerConversionsUpload;
 const {SftpConfig} = SftpUpload;
 const {SheetsLoadConfig} = SheetsLoadCsv;
 const {SearchAdsConfig} = saConversionsUpload;
+const {GoogleAdsConfig} = adsCustomerMatchUpload;
 
 /**
  * API configuration types for all APIs that Tentacles supports.
@@ -65,6 +67,7 @@ const API_HANDLERS = Object.freeze({
   [SftpUpload.name]: SftpUpload,
   [SheetsLoadCsv.name]: SheetsLoadCsv,
   [saConversionsUpload.name]: saConversionsUpload,
+  [adsCustomerMatchUpload.name]: adsCustomerMatchUpload,
 });
 
 /**

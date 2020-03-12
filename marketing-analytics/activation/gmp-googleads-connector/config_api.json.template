@@ -83,5 +83,15 @@
         }
       ]
     }
+  },
+  "AC": {
+    "foo": {
+      "clientCustomerId": "[CLIENT-CUSTOMER-ID]",
+      "developerToken": "[DEVELOPER_TOKEN]",
+      "clientId": "[CLIENT-ID]",
+      "clientSecret": "[CLIENT-SECRET]",
+      "refreshToken": "[REFRESH-TOKEN]",
+      "userListName": "[USER-LIST-NAME]"
+    }
   }
 }
