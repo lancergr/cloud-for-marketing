@@ -394,6 +394,12 @@ Pub/Sub topic [${PS_TOPIC}-push]."
   gcloud functions deploy "${PROJECT_NAME}"_api --entry-point requestApi \
 --trigger-topic "${PS_TOPIC}"-push "${cf_flag[@]}"
   quit_if_failed $?
+
+  printf '%s\n' " 3. '${PROJECT_NAME}_api_python' is triggered by new messages from \
+Pub/Sub topic [${PS_TOPIC}-push]."
+  gcloud functions deploy "${PROJECT_NAME}"_api_python --entry-point request_api \
+--trigger-topic "${PS_TOPIC}"-push "${cf_flag[@]}"
+  quit_if_failed $?
 }
 
 #######################################

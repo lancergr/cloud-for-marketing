@@ -29,41 +29,10 @@ exports.name = 'AC';
 /** Data for this API will be transferred through GCS by default. */
 exports.defaultOnGcs = false;
 
-/**
- * Configuration for a Campaign Manager(CM) conversions upload.
- * For CM conversions uploading, a 'profileId' is required as
- * 'InsertConversionsConfig' suggests. But here a property 'cmAccountId' (CM
- * account Id) exists instead. The reason is that different users(email based)
- * have different profiles for the same CM account. In order NOT to bind the
- * configuration to a specific user(email), the function uses CM
- * account Id plus current user(email) to get the current profile. After that,
- * put the profileId into the 'InsertConversionsConfig' and invoke the function
- * to upload conversions.
- *
- * @typedef {{
- *   cmAccountId:string,
- *   recordsPerRequest:(number|undefined),
- *   qps:(number|undefined),
- *   numberOfThreads:(number|undefined),
- *   cmConfig:!InsertConversionsConfig,
- * }}
- */
 let GoogleAdsConfig;
 
 exports.GoogleAdsConfig = GoogleAdsConfig;
 
-/**
- * Sends out the data as conversions to Campaign Manager (CM).
- * Gets the CM user profile based on CM account Id and current user, then uses
- * the profile to send out data as CM conversions with speed control and data
- * volume adjustment.
- * @param {string} records Data to send out as conversions. Expected JSON
- *     string in each line.
- * @param {string} messageId Pub/sub message ID for log.
- * @param {!CampaignManagerConfig} config
- * @return {!Promise<boolean>} Whether 'records' have been sent out without any
- *     errors.
- */
 exports.sendData = (records, messageId, config) => {
   return true;
 };
