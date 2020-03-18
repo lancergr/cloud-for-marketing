@@ -61,6 +61,7 @@ INTEGRATION_APIS_DESCRIPTION=(
   "Google Sheets API for Google Ads conversions scheduled uploads based on \
 Google Sheets"
   "Search Ads 360 Conversions Upload"
+  "Google Ads Customer Match"
 )
 
 # All build-in external APIs.
@@ -71,6 +72,7 @@ INTEGRATION_APIS=(
   "N/A"
   "sheets.googleapis.com"
   "doubleclicksearch"
+  "N/A"
 )
 
 # Code of external APIs. Used to create different Pub/Sub topics and
@@ -82,6 +84,7 @@ INTEGRATION_APIS_CODE=(
   "SFTP"
   "GS"
   "SA"
+  "AC"
 )
 
 # Common permissions to install Tentacles.
@@ -398,7 +401,8 @@ Pub/Sub topic [${PS_TOPIC}-push]."
   printf '%s\n' " 3. '${PROJECT_NAME}_api_python' is triggered by new messages from \
 Pub/Sub topic [${PS_TOPIC}-push]."
   gcloud functions deploy "${PROJECT_NAME}"_api_python --entry-point request_api \
---trigger-topic "${PS_TOPIC}"-push "${cf_flag[@]}"
+--trigger-topic "${PS_TOPIC}"-push --region="${REGION}" --timeout=540 --memory=2048MB \
+--runtime="python37" --set-env-vars=TENTACLES_TOPIC_PREFIX="${PS_TOPIC}"
   quit_if_failed $?
 }
 
